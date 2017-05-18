@@ -1,18 +1,6 @@
 #lordius/alpine-nginx:nginx-1.10.1
 FROM alpine:3.4
 MAINTAINER lordius<andriy.khomych@gmail.com>
-#Variables
-ENV KEEPALIVE_TIMEOUT 3000
-ENV FASTCGI_READ_TIMEOUT 3000
-ENV LISTEN_PORT 80
-ENV SERVER_ROOT /var/www/localhost/htdocs
-ENV SERVER_NAME localhost
-ENV CLIENT_MAX_BODY_SIZE 32m
-ENV PROXY_CONNECT_TIMEOUT 600
-ENV PROXY_SEND_TIMEOUT 600
-ENV PROXY_READ_TIMEOUT 600
-ENV SEND_TIMEOUT 600
-ENV PROXY_PASS http://apache2_mpm:8080
 #Install packages
 RUN apk add --no-cache nginx
 RUN adduser -D -u 1000 -g 'www' www
