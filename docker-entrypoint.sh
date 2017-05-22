@@ -18,7 +18,15 @@ if [ -z "$USE_ONLY_CONFIGS" ]; then
   fi
 
   if [ -n "$LISTEN_PORT" ]; then
-        sed -i 's@^        listen.*@'"        listen                  ${LISTEN_PORT};"'@' /etc/nginx/nginx.conf
+        sed -i 's@^        listen                  80;.*@'"        listen                  ${LISTEN_PORT};"'@' /etc/nginx/nginx.conf
+  fi
+
+  if [ -n "$LISTEN_SSL_PORT" ]; then
+        sed -i 's@^        listen              443 ssl;.*@'"        listen                  ${LISTEN_SSL_PORT};"'@' /etc/nginx/nginx.conf
+  fi
+
+  if [ -n "$GENERATE_SSL_KEY" ]; then
+        openssl req -x509 -nodes -subj '/CN=localhost/O=My Company Name LTD./C=US' -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx-selfsigned.key -out /etc/nginx/ssl/nginx-selfsigned.crt
   fi
 
   if [ -n "$SERVER_ROOT" ]; then

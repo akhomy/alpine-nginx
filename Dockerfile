@@ -2,9 +2,9 @@
 FROM alpine:3.4
 MAINTAINER lordius<andriy.khomych@gmail.com>
 #Install packages
-RUN apk add --no-cache nginx
+RUN apk add --no-cache nginx ca-certificates openssl openssl-dev pcre-dev
 RUN adduser -D -u 1000 -g 'www' www
-#RUN mkdir /var/www/localhost/htdocs
+RUN mkdir /etc/nginx/ssl/ && chown -R www:www /etc/nginx/ssl/
 RUN chown -R www:www /var/lib/nginx
 RUN chown -R www:www /var/www/localhost/htdocs
 RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
@@ -12,6 +12,7 @@ RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
 #RUN rm /etc/nginx/nginx.conf
 ADD configs/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD configs/nginx/proxy_params /etc/nginx/proxy_params
+RUN openssl req -x509 -nodes -subj '/CN=localhost/O=My Company Name LTD./C=US' -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx-selfsigned.key -out /etc/nginx/ssl/nginx-selfsigned.crt
 #Clean trash
 RUN  rm -rf /var/lib/apt/lists/* && \
      rm -rf /var/cache/apk/* && \
