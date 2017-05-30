@@ -2,7 +2,7 @@
 <p>NGINX 1.10 image based on Alpine Linux.</p>
 
 ### Include own configs
-<p>You could mount to <code>/temp_configs_dir</code> with you volume and use own configs.</p>
+<p>You could mount to <code>/temp_configs_dir</code> with your volume and use own configs.</p>
 <p>USE_ONLY_CONFIGS - disable using of the custom ENV in list bellow.</p>
 
 ### Available options
