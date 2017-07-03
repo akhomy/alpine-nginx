@@ -20,6 +20,8 @@ RUN  rm -rf /var/lib/apt/lists/* && \
 
 #Create /temp_configs_dir for use
 RUN mkdir /temp_configs_dir && chmod -R +x /temp_configs_dir && cd /temp_configs_dir
+# Fix permissions to nginx tmp
+RUN chmod -R +x /var/lib/nginx/tmp
 
 #Setup temp directory
 WORKDIR /var/www/localhost/htdocs
