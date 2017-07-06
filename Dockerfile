@@ -1,4 +1,4 @@
-#lordius/alpine-nginx:nginx-1.10.1
+#lordius/alpine-nginx:nginx-1.10
 FROM alpine:3.4
 MAINTAINER lordius<andriy.khomych@gmail.com>
 #Install packages
