@@ -57,6 +57,25 @@ if [ -z "$USE_ONLY_CONFIGS" ]; then
         sed -i 's@^        send_timeout.*@'"        send_timeout                  ${SEND_TIMEOUT};"'@' /etc/nginx/nginx.conf
   fi
 
+  if [ -n "$FASTCGI_BUFFERS" ]; then
+        sed -i 's@^        fastcgi_buffers.*@'"        fastcgi_buffers                  ${FASTCGI_BUFFERS};"'@' /etc/nginx/nginx.conf
+  fi
+
+  if [ -n "$FASTCGI_BUFFER_SIZE" ]; then
+        sed -i 's@^        fastcgi_buffer_size.*@'"        fastcgi_buffer_size                  ${FASTCGI_BUFFER_SIZE};"'@' /etc/nginx/nginx.conf
+  fi
+
+  if [ -n "$PROXY_BUFFER_SIZE" ]; then
+        sed -i 's@^        proxy_buffer_size.*@'"        proxy_buffer_size                  ${PROXY_BUFFER_SIZE};"'@' /etc/nginx/nginx.conf
+  fi
+
+  if [ -n "$PROXY_BUFFERS" ]; then
+        sed -i 's@^        proxy_buffers.*@'"        proxy_buffers                  ${PROXY_BUFFERS};"'@' /etc/nginx/nginx.conf
+  fi
+
+  if [ -n "$PROXY_BUSY_BUFFER_SIZE" ]; then
+        sed -i 's@^        proxy_busy_buffers_size.*@'"        proxy_busy_buffers_size                 ${PROXY_BUSY_BUFFER_SIZE};"'@' /etc/nginx/nginx.conf
+  fi
 
   if [ -n "$PROXY_PASS" ]; then
         sed -i 's@^            proxy_pass.*@'"            proxy_pass ${PROXY_PASS};"'@' /etc/nginx/nginx.conf
