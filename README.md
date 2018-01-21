@@ -1,4 +1,4 @@
-# NGINX image for LAMP stack
+# NGINX image for Docker Compose LAMP stack
 NGINX image based on Alpine Linux.
 
 ## Include own configs
@@ -35,4 +35,4 @@ Run image the on port 80, be aware first you need start proxy(in [docker-compose
 
 ## Full LAMP stack
 
-See [docker-compose-lamp](https://github.com/a-kom/docker-compose-lamp)
+See [Docker Compose LAMP](https://github.com/a-kom/docker-compose-lamp).
