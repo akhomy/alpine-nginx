@@ -1,6 +1,6 @@
 #lordius/alpine-nginx
 FROM alpine:3.4
-MAINTAINER lordius<andriy.khomych@gmail.com>
+LABEL maintainer=andriy.khomych@gmail.com
 #Install packages
 RUN apk add --no-cache nginx ca-certificates openssl openssl-dev pcre-dev
 RUN adduser -D -u 1000 -g 'www' www
