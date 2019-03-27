@@ -6,9 +6,9 @@ You could mount to `/temp_configs_dir` with your volume and use own configs. Var
 
 ## How to run
 
-Run image the on port 80, be aware first you need start proxy(in [docker-compose-lamp](https://github.com/a-kom/docker-compose-lamp) **APACHE2-MPM** container).
+Run image the on port 80, be aware first you need start proxy(in [docker-compose-lamp](https://github.com/akhomy/docker-compose-lamp) **APACHE2-MPM** container).
 
-`docker run -v /hostDir:/var/www/localhost/htdocs -d -p 8003:80  -e LISTEN_PORT="80" -e PROXY_PASS="http://apache2_mpm:8080" --name nginx --link apache2_mpm lordius/alpine-nginx`
+`docker run -v /hostDir:/var/www/localhost/htdocs -d -p 8003:80  -e LISTEN_PORT="80" -e PROXY_PASS="http://apache2_mpm:8080" --name nginx --link apache2_mpm akhomy/alpine-nginx`
 
 ## Environment Variables
 
@@ -18,7 +18,7 @@ Run image the on port 80, be aware first you need start proxy(in [docker-compose
 | FASTCGI_READ_TIMEOUT                              | `fastcgi_read_timeout        300`                                         | Line *`fastcgi_read_timeout`* in the **/etc/nginx/nginx.conf**                                        |
 | LISTEN_PORT                                       | `listen                  80`                                              | Line *`listen`* in the **/etc/nginx/nginx.conf**                                                      |
 | LISTEN_SSL_PORT                                   | `listen              443 ssl`                                             | Line *`listen`* in the **/etc/nginx/nginx.conf**                                                      |
-| GENERATE_SSL_KEY                                  |             `0`                                                              | Generates SSL keys **/etc/nginx/ssl/nginx-selfsigned.key**, **/etc/nginx/ssl/nginx-selfsigned.crt**   |
+| OPENSSL_ARGS                                                                        |             `req -x509 -nodes -subj '/CN=localhost/O=My Company Name LTD./C=US' -days 2048 -newkey rsa:2048`                                           | Generates SSL keys **/etc/nginx/ssl/nginx-selfsigned.key**, **/etc/nginx/ssl/nginx-selfsigned.crt**  with custom arguments. E.g. `openssl req -x509 -nodes -subj '/CN=localhost/O=My Company Name LTD./C=US' -days 2048 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx-selfsigned.key -out /etc/nginx/ssl/nginx-selfsigned.crt`        |
 | SERVER_ROOT                                       | `root                    /var/www/localhost/htdocs`                       | Line *`root`* in the **/etc/nginx/nginx.conf**                                                        |
 | SERVER_NAME                                       | `server_name             localhost`                                       | Line *`server_name`* in the **/etc/nginx/nginx.conf**                                                 |
 | CLIENT_MAX_BODY_SIZE                              | `client_max_body_size    32m`                                             | Line *`client_max_body_size`* in the **/etc/nginx/nginx.conf**                                        |
@@ -35,4 +35,4 @@ Run image the on port 80, be aware first you need start proxy(in [docker-compose
 
 ## Full LAMP stack
 
-See [Docker Compose LAMP](https://github.com/a-kom/docker-compose-lamp).
+See [Docker Compose LAMP](https://github.com/akhomy/docker-compose-lamp).
