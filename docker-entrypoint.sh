@@ -22,7 +22,7 @@ if [ -z "$USE_ONLY_CONFIGS" ]; then
     fi
 
     if [ -n "$LISTEN_SSL_PORT" ]; then
-        sed -i 's@^        listen              443 ssl;.*@'"        listen                  ${LISTEN_SSL_PORT};"'@' /etc/nginx/nginx.conf
+        sed -i 's@^        listen              443 ssl;.*@'"        listen                  ${LISTEN_SSL_PORT} ssl;"'@' /etc/nginx/nginx.conf
     fi
 
     if [ -n "$SERVER_ROOT" ]; then
