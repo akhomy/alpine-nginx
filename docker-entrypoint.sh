@@ -7,7 +7,9 @@ if [ "$(ls -A /temp_configs_dir)" ]; then
     cp -f -R /temp_configs_dir/* /etc/
 fi
 
-if [ -z "$USE_ONLY_CONFIGS" ]; then
+if [ "$USE_ONLY_CONFIGS" -eq "1" ]; then
+    echo $USE_ONLY_CONFIGS;
+else
 
     if [ -n "$KEEPALIVE_TIMEOUT" ]; then
         sed -i 's@^    keepalive_timeout.*@'"    keepalive_timeout           ${KEEPALIVE_TIMEOUT};"'@' /etc/nginx/nginx.conf
