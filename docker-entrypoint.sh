@@ -74,11 +74,7 @@ if [ -z "$USE_ONLY_CONFIGS" ]; then
     fi
 
     if [ -n "$PROXY_PASS" ]; then
-        sed -i 's@^            proxy_pass.*@'"            proxy_pass ${PROXY_PASS};"'@' /etc/nginx/nginx.conf
-    fi
-
-    if [ -n "$PROXY_PASS" ]; then
-        sed -i 's@^            proxy_pass.*@'"            proxy_pass ${PROXY_PASS};"'@' /etc/nginx/nginx.conf
+            sed -i 's@^            proxy_pass.*@'"            proxy_pass ${PROXY_PASS};"'@' /etc/nginx/nginx.conf
     fi
 
     if  [ -n "$OPENSSL_ARGS" ]; then
