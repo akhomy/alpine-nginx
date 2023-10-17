@@ -1,12 +1,15 @@
+# Status
+Archived in favor of other tools.
+
 # NGINX image for Docker Compose LAMP stack
 NGINX image based on Alpine Linux.
 
 ## Include own configs
-You could mount to `/temp_configs_dir` with your volume and use own configs. Variable **USE_ONLY_CONFIGS** - disable using the custom variables in the list below.
+You could mount to `/temp_configs_dir` with your volume and use your own configs. Variable **USE_ONLY_CONFIGS** - disable using the custom variables in the list below.
 
 ## How to run
 
-Run image the on port 80, be aware first you need start proxy(in [docker-compose-lamp](https://github.com/akhomy/docker-compose-lamp) **APACHE2-MPM** container).
+Run the image on port 80, be aware first you need to start proxy(in [docker-compose-lamp](https://github.com/akhomy/docker-compose-lamp) **APACHE2-MPM** container).
 
 `docker run -v /hostDir:/var/www/localhost/htdocs -d -p 8003:80  -e LISTEN_PORT="80" -e PROXY_PASS="http://apache2_mpm:8080" --name nginx --link apache2_mpm akhomy/alpine-nginx`
 
